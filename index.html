@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>For You 🤍</title>
+<style>
+body{
+  margin:0;
+  font-family: Arial, sans-serif;
+  text-align:center;
+  background: linear-gradient(135deg,#ffe6ea,#fff7f7);
+}
+
+/* pages */
+.page{display:none; padding:60px;}
+.active{display:block;}
+
+.box{
+  background:white;
+  padding:30px;
+  border-radius:20px;
+  box-shadow:0 8px 20px rgba(0,0,0,0.1);
+  display:inline-block;
+}
+
+h1{color:#ff4d6d;}
+p{font-size:20px; color:#444;}
+
+button{
+  padding:12px 25px;
+  border:none;
+  border-radius:25px;
+  background:#ff4d6d;
+  color:white;
+  font-size:16px;
+  margin-top:20px;
+}
+
+/* hearts */
+.heart{
+  position: fixed;
+  top:-10px;
+  font-size:20px;
+  animation: fall linear forwards;
+}
+@keyframes fall{
+  to{transform: translateY(110vh);}
+}
+</style>
+</head>
+
+<body>
+
+<div class="page active" id="p1">
+<div class="box">
+<h1>Mnkuu 🤍</h1>
+<p>This site is specially for you</p>
+<button onclick="show(2)">Click here</button>
+</div>
+</div>
+
+<div class="page" id="p2">
+<div class="box">
+<h1>SORRY 😔<br>SORRY 😔<br>SORRY 😔</h1>
+<button onclick="show(3)">Next</button>
+</div>
+</div>
+
+<div class="page" id="p3">
+<div class="box">
+<h1>You Matter 💛</h1>
+<p>Tum bohot important ho… genuinely sorry 🙂</p>
+</div>
+</div>
+
+<script>
+function show(n){
+ document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+ document.getElementById('p'+n).classList.add('active');
+}
+
+/* hearts */
+setInterval(()=>{
+ let heart=document.createElement("div");
+ heart.className="heart";
+ heart.innerHTML="💗";
+ heart.style.left=Math.random()*100+"vw";
+ heart.style.animationDuration=(3+Math.random()*2)+"s";
+ document.body.appendChild(heart);
+ setTimeout(()=>heart.remove(),5000);
+},400);
+</script>
+
+</body>
+</html>
